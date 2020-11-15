@@ -1,4 +1,4 @@
-#include "Asset.h"
+#include "../headers/Asset.h"
 
 Asset::Asset(SDL_Renderer* renderer, SDL_Texture* texture) {
 	this->renderer = renderer;

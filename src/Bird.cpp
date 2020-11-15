@@ -1,4 +1,4 @@
-#include "Bird.h"
+#include "../headers/Bird.h"
 
 Bird::Bird(SDL_Renderer* renderer, SDL_Texture* texture) : Asset(renderer, texture) {
 	source.h = 12;

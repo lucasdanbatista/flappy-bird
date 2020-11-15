@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SDL_image.h>
-#include "Asset.h"
-#include "Bird.h"
-#include "Physics.h"
+#include "headers/Asset.h"
+#include "headers/Bird.h"
+#include "headers/Physics.h"
 
 #undef main
 
