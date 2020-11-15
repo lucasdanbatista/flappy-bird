@@ -2,7 +2,6 @@
 #include <SDL_image.h>
 #include "headers/Asset.h"
 #include "headers/Bird.h"
-#include "headers/Physics.h"
 
 #undef main
 
@@ -24,8 +23,6 @@ int main(int argc, char* args[]) {
 	auto fps = 1000 / 8;
 
 	SDL_FreeSurface(surface);
-
-	Physics physics;
 
 	Asset scenario(renderer, texture);
 	scenario.source.h = 256;
@@ -103,10 +100,7 @@ int main(int argc, char* args[]) {
 		grass.copyToRenderer();
 		if (grass.target.x < -70) grass.target.x = 0;
 
-		if (!bird.isFlypping) {
-			physics.applyGravity(&bird.target);
-		}
-		bird.isFlypping = false;
+		bird.fall();
 
 		SDL_RenderPresent(renderer);
 		SDL_Delay(fps);

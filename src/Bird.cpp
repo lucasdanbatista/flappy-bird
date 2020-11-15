@@ -11,6 +11,9 @@ Bird::Bird(SDL_Renderer* renderer, SDL_Texture* texture) : Asset(renderer, textu
 }
 
 void Bird::fly() {
-	isFlypping = true;
 	target.y -= 40;
+}
+
+void Bird::fall() {
+	target.y += 15;
 }

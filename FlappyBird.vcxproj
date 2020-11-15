@@ -142,7 +142,6 @@
     <ClCompile Include="src\Asset.cpp" />
     <ClCompile Include="src\Bird.cpp" />
     <ClCompile Include="FlappyBird.cpp" />
-    <ClCompile Include="src\Physics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -150,7 +149,6 @@
   <ItemGroup>
     <ClInclude Include="headers\Asset.h" />
     <ClInclude Include="headers\Bird.h" />
-    <ClInclude Include="headers\Physics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
