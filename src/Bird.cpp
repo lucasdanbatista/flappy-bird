@@ -8,6 +8,9 @@ Bird::Bird(SDL_Renderer* renderer, SDL_Texture* texture) : Asset(renderer, textu
 	target.w = 17 * 2;
 	target.x = 100;
 	target.y = 256;
+
+	collisionBox.width = target.w;
+	collisionBox.height = target.h;
 }
 
 void Bird::fly() {
@@ -16,4 +19,11 @@ void Bird::fly() {
 
 void Bird::fall() {
 	target.y += 15;
+}
+
+bool Bird::hasCollidedWith(Asset asset) {
+	if (asset.type == "grass") {
+		return target.y >= 376;
+	}
+	return false;
 }

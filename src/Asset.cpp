@@ -8,3 +8,7 @@ Asset::Asset(SDL_Renderer* renderer, SDL_Texture* texture) {
 void Asset::copyToRenderer() {
 	SDL_RenderCopy(renderer, texture, &source, &target);
 }
+
+bool Asset::hasCollidedWith(Asset asset) {
+	return false;
+}

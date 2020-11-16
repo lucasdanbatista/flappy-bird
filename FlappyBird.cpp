@@ -60,7 +60,7 @@ int main(int argc, char* args[]) {
 	Grass grass(renderer, texture);
 
 	auto currentFrame = 0;
-	auto isRunning = true;
+	auto isRunning = true, isPaused = false;
 	while (isRunning) {
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
@@ -74,31 +74,47 @@ int main(int argc, char* args[]) {
 			}
 		}
 
-		SDL_RenderClear(renderer);
+		if (bird.hasCollidedWith(grass)) {
+			bird.target.y = grass.target.y - bird.collisionBox.height;
+			cout << bird.target.y << endl;
+			isPaused = true;
 
-		scenario.copyToRenderer();
+			SDL_RenderClear(renderer);
+			scenario.copyToRenderer();
+			topPipe.copyToRenderer();
+			bottomPipe.copyToRenderer();
+			grass.copyToRenderer();
+			bird.copyToRenderer();
+			SDL_RenderPresent(renderer);
+		}
 
-		bird.source.y = (currentFrame % 3) * 16;
-		bird.copyToRenderer();
+		if (!isPaused) {
+			SDL_RenderClear(renderer);
 
-		topPipe.target.x -= 8;
-		topPipe.copyToRenderer();
-		if (topPipe.target.x < -70) topPipe.target.x = 300;
+			scenario.copyToRenderer();
+			topPipe.copyToRenderer();
+			bottomPipe.copyToRenderer();
+			grass.copyToRenderer();
+			bird.copyToRenderer();
 
-		bottomPipe.target.x -= 8;
-		bottomPipe.copyToRenderer();
-		if (bottomPipe.target.x < -70) bottomPipe.target.x = 300;
+			bird.source.y = (currentFrame % 3) * 16;
 
-		grass.target.x -= 8;
-		grass.copyToRenderer();
-		if (grass.target.x < -70) grass.target.x = 0;
+			topPipe.target.x -= 8;
+			if (topPipe.target.x < -70) topPipe.target.x = 300;
 
-		bird.fall();
+			bottomPipe.target.x -= 8;
+			if (bottomPipe.target.x < -70) bottomPipe.target.x = 300;
 
-		SDL_RenderPresent(renderer);
-		SDL_Delay(fps);
+			grass.target.x -= 8;
+			if (grass.target.x < -70) grass.target.x = 0;
 
-		currentFrame++;
+			bird.fall();
+
+			SDL_RenderPresent(renderer);
+			SDL_Delay(fps);
+
+			currentFrame++;
+		}
 	}
 
 	destroy(surface, renderer, window, texture);
