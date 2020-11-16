@@ -1,12 +1,9 @@
-#include <iostream>
 #include <SDL_image.h>
 #include "headers/Asset.h"
 #include "headers/Bird.h"
 #include "headers/Grass.h"
 
 #undef main
-
-using namespace std;
 
 void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, SDL_Texture* texture) {
 	SDL_DestroyRenderer(renderer);
