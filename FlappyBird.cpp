@@ -2,6 +2,7 @@
 #include <SDL_image.h>
 #include "headers/Asset.h"
 #include "headers/Bird.h"
+#include "headers/Grass.h"
 
 #undef main
 
@@ -56,15 +57,7 @@ int main(int argc, char* args[]) {
 	topPipe.target.x = 200;
 	topPipe.target.y = -50;
 
-	Asset grass(renderer, texture);
-	grass.source.h = 56;
-	grass.source.w = 154;
-	grass.source.x = 146;
-	grass.source.y = 0;
-	grass.target.h = 56 * 2;
-	grass.target.w = 154 * 2.5;
-	grass.target.x = 0;
-	grass.target.y = 400;
+	Grass grass(renderer, texture);
 
 	auto currentFrame = 0;
 	auto isRunning = true;
