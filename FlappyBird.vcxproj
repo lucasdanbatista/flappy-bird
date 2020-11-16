@@ -139,18 +139,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\Grass.cpp" />
     <ClCompile Include="src\Asset.cpp" />
     <ClCompile Include="src\Bird.cpp" />
     <ClCompile Include="FlappyBird.cpp" />
+    <ClCompile Include="Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\Component.h" />
     <ClInclude Include="headers\Grass.h" />
     <ClInclude Include="headers\Asset.h" />
     <ClInclude Include="headers\Bird.h" />
+    <ClInclude Include="Widget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
