@@ -57,6 +57,15 @@ void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, S
 	IMG_Quit();
 }
 
+void refreshScene(State state) {
+	SDL_RenderClear(state.renderer);
+	scenario->copyToRenderer();
+	topPipe->copyToRenderer();
+	bottomPipe->copyToRenderer();
+	grass->copyToRenderer();
+	bird->copyToRenderer();
+}
+
 int main(int argc, char* args[]) {
 	auto window = SDL_CreateWindow("Flappy Bird", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 288, 512, 0);
 	auto surface = IMG_Load("sprites.png");
@@ -98,26 +107,15 @@ int main(int argc, char* args[]) {
 			bird->target.y = grass->target.y - bird->collisionBox.height;
 			state.isPaused = true;
 
-			SDL_RenderClear(state.renderer);
+			refreshScene(state);
 
-			scenario->copyToRenderer();
-			topPipe->copyToRenderer();
-			bottomPipe->copyToRenderer();
-			grass->copyToRenderer();
-			bird->copyToRenderer();
 			playButton.copyToRenderer();
 
 			SDL_RenderPresent(state.renderer);
 		}
 
 		if (!state.isPaused) {
-			SDL_RenderClear(state.renderer);
-
-			scenario->copyToRenderer();
-			topPipe->copyToRenderer();
-			bottomPipe->copyToRenderer();
-			grass->copyToRenderer();
-			bird->copyToRenderer();
+			refreshScene(state);
 
 			bird->source.y = (state.currentFrame % 3) * 16;
 
