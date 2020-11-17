@@ -32,7 +32,8 @@ bool Bird::hasCollidedWith(Asset* asset) {
 		return target.y >= 376;
 	}
 	else if (asset->type == "bottomPipe") {
-		return target.x >= asset->target.x;
+		cout << "xPipe: " << asset->target.x << "\txBird: " << target.x << "\tyBird: " << target.y << endl;
+		return (asset->target.x <= 132 && asset->target.x >= 120) && target.y >= 311;
 	}
 	return false;
 }
