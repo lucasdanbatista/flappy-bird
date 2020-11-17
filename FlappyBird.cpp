@@ -4,7 +4,8 @@
 #include "headers/Grass.h"
 #include "headers/PlayButton.h"
 #include "headers/state.h"
-#include"headers/BottomPipe.h"
+#include "headers/BottomPipe.h"
+#include "headers/TopPipe.h"
 
 #undef main
 
@@ -20,6 +21,8 @@ void initialize() {
 	bird = new Bird(state);
 	grass = new Grass(state);
 	playButton = new PlayButton(state);
+	topPipe = new TopPipe(state);
+	bottomPipe = new BottomPipe(state);
 
 	scenario = new Asset(state);
 	scenario->source.h = 256;
@@ -30,26 +33,6 @@ void initialize() {
 	scenario->target.h = 256 * 2;
 	scenario->target.x = 0;
 	scenario->target.y = 0;
-
-	bottomPipe = new BottomPipe(state);
-	bottomPipe->source.h = 121;
-	bottomPipe->source.w = 26;
-	bottomPipe->source.x = 330;
-	bottomPipe->source.y = 0;
-	bottomPipe->target.h = 121 * 2;
-	bottomPipe->target.w = 26 * 2;
-	bottomPipe->target.x = 200;
-	bottomPipe->target.y = 291;
-
-	topPipe = new Asset(state);
-	topPipe->source.h = 135;
-	topPipe->source.w = 26;
-	topPipe->source.x = 302;
-	topPipe->source.y = 0;
-	topPipe->target.h = 135 * 2;
-	topPipe->target.w = 26 * 2;
-	topPipe->target.x = 200;
-	topPipe->target.y = -50;
 }
 
 void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, SDL_Texture* texture) {
@@ -76,6 +59,13 @@ void pauseGameAndShowPlayButton() {
 	SDL_RenderPresent(state->renderer);
 }
 
+void restartGame() {
+	topPipe->setTargetInitialPosition();
+	bird->setTargetInitialPosition();
+	bottomPipe->setTargetInitialPosition();
+	state->isPaused = false;
+}
+
 int main(int argc, char* args[]) {
 	auto window = SDL_CreateWindow("Flappy Bird", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 288, 512, 0);
 	auto surface = IMG_Load("sprites.png");
@@ -88,8 +78,6 @@ int main(int argc, char* args[]) {
 	SDL_FreeSurface(surface);
 
 	initialize();
-
-	PlayButton playButton(state);
 
 	while (state->isRunning) {
 		SDL_Event event;
@@ -104,8 +92,7 @@ int main(int argc, char* args[]) {
 				if (state->isPaused) {
 					if (state->mouseX >= 105 && state->mouseX <= 182) {
 						if (state->mouseY >= 260 && state->mouseY <= 282) {
-							bird->target.y = 250;
-							state->isPaused = false;
+							restartGame();
 						}
 					}
 				}
@@ -113,11 +100,10 @@ int main(int argc, char* args[]) {
 			}
 		}
 
-		if (bird->hasCollidedWith(grass)) {
+		if (bird->hasCollidedWith(grass) || bird->hasCollidedWith(bottomPipe)) {
 			bird->target.y = grass->target.y - bird->collisionBox.height;
 			pauseGameAndShowPlayButton();
 		}
-
 
 		if (!state->isPaused) {
 			refreshScene();

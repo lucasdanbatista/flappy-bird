@@ -4,13 +4,19 @@ Bird::Bird(State* state) : Asset(state) {
 	source.h = 12;
 	source.w = 17;
 	source.x = 392;
+
 	target.h = 12 * 2;
 	target.w = 17 * 2;
-	target.x = 100;
-	target.y = 256;
+
+	setTargetInitialPosition();
 
 	collisionBox.width = target.w;
 	collisionBox.height = target.h;
+}
+
+void Bird::setTargetInitialPosition() {
+	target.x = 100;
+	target.y = 256;
 }
 
 void Bird::fly() {
@@ -26,7 +32,7 @@ bool Bird::hasCollidedWith(Asset* asset) {
 		return target.y >= 376;
 	}
 	else if (asset->type == "bottomPipe") {
-		return asset->target.x >= target.x;
+		return target.x >= asset->target.x;
 	}
 	return false;
 }

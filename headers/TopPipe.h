@@ -2,10 +2,9 @@
 
 #include "Asset.h"
 
-class BottomPipe : public Asset {
+class TopPipe : public Asset {
 public:
-	BottomPipe(State* state);
+	TopPipe(State* state);
 
 	virtual void setTargetInitialPosition() override;
 };
-

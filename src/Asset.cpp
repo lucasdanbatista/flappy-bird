@@ -7,3 +7,5 @@ bool Asset::hasCollidedWith(Asset* asset) {
 Asset::Asset(State* state) : Component(state) {
 	Component::Component(state);
 }
+
+void Asset::setTargetInitialPosition() {}

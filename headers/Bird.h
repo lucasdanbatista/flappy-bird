@@ -13,5 +13,7 @@ public:
 	virtual void fall();
 
 	virtual bool hasCollidedWith(Asset* asset) override;
+
+	virtual void setTargetInitialPosition() override;
 };
 

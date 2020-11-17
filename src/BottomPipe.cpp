@@ -10,6 +10,11 @@ BottomPipe::BottomPipe(State* state) : Asset(state) {
 
 	target.h = 121 * 2;
 	target.w = 26 * 2;
+
+	setTargetInitialPosition();
+}
+
+void BottomPipe::setTargetInitialPosition() {
 	target.x = 200;
 	target.y = 291;
 }

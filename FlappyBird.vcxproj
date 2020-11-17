@@ -146,6 +146,7 @@
     <ClCompile Include="src\Bird.cpp" />
     <ClCompile Include="FlappyBird.cpp" />
     <ClCompile Include="src\PlayButton.cpp" />
+    <ClCompile Include="src\TopPipe.cpp" />
     <ClCompile Include="src\Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,7 @@
     <ClInclude Include="headers\Grass.h" />
     <ClInclude Include="headers\Asset.h" />
     <ClInclude Include="headers\Bird.h" />
+    <ClInclude Include="headers\TopPipe.h" />
     <ClInclude Include="headers\Widget.h" />
     <ClInclude Include="headers\PlayButton.h" />
     <ClInclude Include="headers\State.h" />

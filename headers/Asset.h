@@ -14,4 +14,6 @@ public:
 	Asset(State* state);
 
 	virtual bool hasCollidedWith(Asset* asset);
+
+	virtual void setTargetInitialPosition();
 };
