@@ -6,11 +6,12 @@
 #include "headers/state.h"
 #include "headers/BottomPipe.h"
 #include "headers/TopPipe.h"
+#include "headers/Scenario.h"
 
 #undef main
 
-Asset* scenario;
-Asset* topPipe;
+Scenario* scenario;
+TopPipe* topPipe;
 BottomPipe* bottomPipe;
 Bird* bird;
 Grass* grass;
@@ -23,16 +24,7 @@ void initialize() {
 	playButton = new PlayButton(state);
 	topPipe = new TopPipe(state);
 	bottomPipe = new BottomPipe(state);
-
-	scenario = new Asset(state);
-	scenario->source.h = 256;
-	scenario->source.w = 144;
-	scenario->source.x = 0;
-	scenario->source.y = 0;
-	scenario->target.w = 144 * 2;
-	scenario->target.h = 256 * 2;
-	scenario->target.x = 0;
-	scenario->target.y = 0;
+	scenario = new Scenario(state);
 }
 
 void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, SDL_Texture* texture) {

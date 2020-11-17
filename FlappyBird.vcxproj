@@ -146,6 +146,7 @@
     <ClCompile Include="src\Bird.cpp" />
     <ClCompile Include="FlappyBird.cpp" />
     <ClCompile Include="src\PlayButton.cpp" />
+    <ClCompile Include="src\Scenario.cpp" />
     <ClCompile Include="src\TopPipe.cpp" />
     <ClCompile Include="src\Widget.cpp" />
   </ItemGroup>
@@ -158,6 +159,7 @@
     <ClInclude Include="headers\Grass.h" />
     <ClInclude Include="headers\Asset.h" />
     <ClInclude Include="headers\Bird.h" />
+    <ClInclude Include="headers\Scenario.h" />
     <ClInclude Include="headers\TopPipe.h" />
     <ClInclude Include="headers\Widget.h" />
     <ClInclude Include="headers\PlayButton.h" />
