@@ -17,8 +17,10 @@ Bird* bird;
 Grass* grass;
 PlayButton* playButton;
 State* state;
+const int fps = (1000 / 8);
 
 void initialize() {
+	state = new State;
 	bird = new Bird(state);
 	grass = new Grass(state);
 	playButton = new PlayButton(state);
@@ -27,10 +29,11 @@ void initialize() {
 	scenario = new Scenario(state);
 }
 
-void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, SDL_Texture* texture) {
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	SDL_DestroyTexture(texture);
+void destroy() {
+	SDL_FreeSurface(state->surface);
+	SDL_DestroyRenderer(state->renderer);
+	SDL_DestroyWindow(state->window);
+	SDL_DestroyTexture(state->texture);
 	SDL_Quit();
 	IMG_Quit();
 }
@@ -59,18 +62,7 @@ void restartGame() {
 }
 
 int main(int argc, char* args[]) {
-	auto window = SDL_CreateWindow("Flappy Bird", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 288, 512, 0);
-	auto surface = IMG_Load("sprites.png");
-	auto fps = 1000 / 8;
-
-	state = new State;
-	state->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
-	state->texture = SDL_CreateTextureFromSurface(state->renderer, surface);
-
-	SDL_FreeSurface(surface);
-
 	initialize();
-
 	while (state->isRunning) {
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
@@ -120,7 +112,7 @@ int main(int argc, char* args[]) {
 		}
 	}
 
-	destroy(surface, state->renderer, window, state->texture);
+	destroy();
 
 	return 0;
 }

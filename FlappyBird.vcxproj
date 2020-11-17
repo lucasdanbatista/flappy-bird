@@ -147,6 +147,7 @@
     <ClCompile Include="FlappyBird.cpp" />
     <ClCompile Include="src\PlayButton.cpp" />
     <ClCompile Include="src\Scenario.cpp" />
+    <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\TopPipe.cpp" />
     <ClCompile Include="src\Widget.cpp" />
   </ItemGroup>

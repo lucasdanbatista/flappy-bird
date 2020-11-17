@@ -1,4 +1,4 @@
-#include "../headers/PlayButton.h";
+#include "../headers/PlayButton.h"
 
 PlayButton::PlayButton(State* state) : Widget(state) {
 	Component::Component(state);
