@@ -8,11 +8,11 @@ class Bird : public Asset
 public:
 	Bird(State* state);
 
-	virtual void fly();
+	void fly();
 
-	virtual void fall();
+	void fall();
 
-	virtual bool hasCollidedWith(Asset* asset) override;
+	bool hasCollidedWith(Asset* asset);
 
 	virtual void setTargetInitialPosition() override;
 
