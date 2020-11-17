@@ -21,9 +21,12 @@ void Bird::fall() {
 	target.y += 15;
 }
 
-bool Bird::hasCollidedWith(Asset asset) {
-	if (asset.type == "grass") {
+bool Bird::hasCollidedWith(Asset* asset) {
+	if (asset->type == "grass") {
 		return target.y >= 376;
+	}
+	else if (asset->type == "bottomPipe") {
+		return true;
 	}
 	return false;
 }

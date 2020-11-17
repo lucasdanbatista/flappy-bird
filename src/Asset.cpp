@@ -1,6 +1,6 @@
 #include "../headers/Asset.h"
 
-bool Asset::hasCollidedWith(Asset asset) {
+bool Asset::hasCollidedWith(Asset* asset) {
 	return false;
 }
 

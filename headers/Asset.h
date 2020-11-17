@@ -13,5 +13,5 @@ public:
 
 	Asset(State state);
 
-	virtual bool hasCollidedWith(Asset asset);
+	virtual bool hasCollidedWith(Asset* asset);
 };

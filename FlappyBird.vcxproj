@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BottomPipe.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\Grass.cpp" />
     <ClCompile Include="src\Asset.cpp" />
@@ -151,6 +152,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\BottomPipe.h" />
     <ClInclude Include="headers\Component.h" />
     <ClInclude Include="headers\Grass.h" />
     <ClInclude Include="headers\Asset.h" />
