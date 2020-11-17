@@ -11,7 +11,7 @@ public:
 	string type = "asset";
 	CollisionBox collisionBox{};
 
-	Asset(State state);
+	Asset(State* state);
 
 	virtual bool hasCollidedWith(Asset* asset);
 };

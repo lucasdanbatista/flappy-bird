@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Grass::Grass(State state) : Asset(state) {
+Grass::Grass(State* state) : Asset(state) {
 	type = "grass";
 
 	source.h = 56;

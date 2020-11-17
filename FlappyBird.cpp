@@ -3,7 +3,7 @@
 #include "headers/Bird.h"
 #include "headers/Grass.h"
 #include "headers/PlayButton.h"
-#include "headers/State.h"
+#include "headers/state.h"
 #include"headers/BottomPipe.h"
 
 #undef main
@@ -13,10 +13,13 @@ Asset* topPipe;
 BottomPipe* bottomPipe;
 Bird* bird;
 Grass* grass;
+PlayButton* playButton;
+State* state;
 
-void initialize(State state) {
+void initialize() {
 	bird = new Bird(state);
 	grass = new Grass(state);
+	playButton = new PlayButton(state);
 
 	scenario = new Asset(state);
 	scenario->source.h = 256;
@@ -57,8 +60,8 @@ void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, S
 	IMG_Quit();
 }
 
-void refreshScene(State state) {
-	SDL_RenderClear(state.renderer);
+void refreshScene() {
+	SDL_RenderClear(state->renderer);
 	scenario->copyToRenderer();
 	topPipe->copyToRenderer();
 	bottomPipe->copyToRenderer();
@@ -66,36 +69,43 @@ void refreshScene(State state) {
 	bird->copyToRenderer();
 }
 
+void pauseGameAndShowPlayButton() {
+	state->isPaused = true;
+	refreshScene();
+	playButton->copyToRenderer();
+	SDL_RenderPresent(state->renderer);
+}
+
 int main(int argc, char* args[]) {
 	auto window = SDL_CreateWindow("Flappy Bird", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 288, 512, 0);
 	auto surface = IMG_Load("sprites.png");
 	auto fps = 1000 / 8;
 
-	State state{};
-	state.renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
-	state.texture = SDL_CreateTextureFromSurface(state.renderer, surface);
+	state = new State;
+	state->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+	state->texture = SDL_CreateTextureFromSurface(state->renderer, surface);
 
 	SDL_FreeSurface(surface);
 
-	initialize(state);
+	initialize();
 
 	PlayButton playButton(state);
 
-	while (state.isRunning) {
+	while (state->isRunning) {
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
-			SDL_GetMouseState(&state.mouseX, &state.mouseY);
+			SDL_GetMouseState(&state->mouseX, &state->mouseY);
 			switch (event.type) {
 			case SDL_QUIT:
-				state.isRunning = false;
+				state->isRunning = false;
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				bird->fly();
-				if (state.isPaused) {
-					if (state.mouseX >= 105 && state.mouseX <= 182) {
-						if (state.mouseY >= 260 && state.mouseY <= 282) {
+				if (state->isPaused) {
+					if (state->mouseX >= 105 && state->mouseX <= 182) {
+						if (state->mouseY >= 260 && state->mouseY <= 282) {
 							bird->target.y = 250;
-							state.isPaused = false;
+							state->isPaused = false;
 						}
 					}
 				}
@@ -105,19 +115,14 @@ int main(int argc, char* args[]) {
 
 		if (bird->hasCollidedWith(grass)) {
 			bird->target.y = grass->target.y - bird->collisionBox.height;
-			state.isPaused = true;
-
-			refreshScene(state);
-
-			playButton.copyToRenderer();
-
-			SDL_RenderPresent(state.renderer);
+			pauseGameAndShowPlayButton();
 		}
 
-		if (!state.isPaused) {
-			refreshScene(state);
 
-			bird->source.y = (state.currentFrame % 3) * 16;
+		if (!state->isPaused) {
+			refreshScene();
+
+			bird->source.y = (state->currentFrame % 3) * 16;
 
 			topPipe->target.x -= 8;
 			if (topPipe->target.x < -70) topPipe->target.x = 300;
@@ -130,14 +135,14 @@ int main(int argc, char* args[]) {
 
 			bird->fall();
 
-			SDL_RenderPresent(state.renderer);
+			SDL_RenderPresent(state->renderer);
 			SDL_Delay(fps);
 
-			state.currentFrame++;
+			state->currentFrame++;
 		}
 	}
 
-	destroy(surface, state.renderer, window, state.texture);
+	destroy(surface, state->renderer, window, state->texture);
 
 	return 0;
 }

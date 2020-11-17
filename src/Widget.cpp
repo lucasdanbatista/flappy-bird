@@ -1,6 +1,6 @@
 #include "../headers/Widget.h"
 
-Widget::Widget(State state) : Component(state) {
+Widget::Widget(State* state) : Component(state) {
 	Component::Component(state);
 }
 

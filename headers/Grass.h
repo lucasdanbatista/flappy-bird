@@ -4,6 +4,6 @@
 
 class Grass : public Asset {
 public:
-	Grass(State state);
+	Grass(State* state);
 };
 

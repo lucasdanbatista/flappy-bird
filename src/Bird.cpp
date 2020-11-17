@@ -1,6 +1,6 @@
 #include "../headers/Bird.h"
 
-Bird::Bird(State state) : Asset(state) {
+Bird::Bird(State* state) : Asset(state) {
 	source.h = 12;
 	source.w = 17;
 	source.x = 392;
@@ -26,7 +26,7 @@ bool Bird::hasCollidedWith(Asset* asset) {
 		return target.y >= 376;
 	}
 	else if (asset->type == "bottomPipe") {
-		return true;
+		return asset->target.x >= target.x;
 	}
 	return false;
 }

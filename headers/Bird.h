@@ -6,7 +6,7 @@ class Bird : public Asset
 {
 
 public:
-	Bird(State state);
+	Bird(State* state);
 
 	virtual void fly();
 

@@ -4,6 +4,6 @@
 
 class BottomPipe : public Asset {
 public:
-	BottomPipe(State state);
+	BottomPipe(State* state);
 };
 

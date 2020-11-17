@@ -4,6 +4,6 @@
 
 class PlayButton : public Widget {
 public:
-	PlayButton(State state);
+	PlayButton(State* state);
 };
 

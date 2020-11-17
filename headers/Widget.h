@@ -4,7 +4,7 @@
 
 class Widget : public Component {
 public:
-	Widget(State state);
+	Widget(State* state);
 
 	virtual void show();
 

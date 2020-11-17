@@ -14,7 +14,7 @@ protected:
 public:
 	SDL_Rect source{}, target{};
 
-	Component(State state);
+	Component(State* state);
 
 	virtual void copyToRenderer();
 };

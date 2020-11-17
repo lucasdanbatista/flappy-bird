@@ -1,8 +1,8 @@
 #include "../headers/Component.h"
 
-Component::Component(State state) {
-	this->renderer = state.renderer;
-	this->texture = state.texture;
+Component::Component(State* state) {
+	this->renderer = state->renderer;
+	this->texture = state->texture;
 }
 
 void Component::copyToRenderer() {

@@ -1,6 +1,6 @@
 #include "../headers/BottomPipe.h"
 
-BottomPipe::BottomPipe(State state) : Asset(state) {
+BottomPipe::BottomPipe(State* state) : Asset(state) {
 	type = "bottomPipe";
 
 	source.h = 121;

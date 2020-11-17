@@ -4,6 +4,6 @@ bool Asset::hasCollidedWith(Asset* asset) {
 	return false;
 }
 
-Asset::Asset(State state) : Component(state) {
+Asset::Asset(State* state) : Component(state) {
 	Component::Component(state);
 }

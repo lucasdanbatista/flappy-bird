@@ -1,6 +1,6 @@
 #include "../headers/PlayButton.h";
 
-PlayButton::PlayButton(State state) : Widget(state) {
+PlayButton::PlayButton(State* state) : Widget(state) {
 	Component::Component(state);
 	source.h = 14;
 	source.w = 40;
