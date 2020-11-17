@@ -1,10 +1,7 @@
 #pragma once
 
 #include "Component.h"
-
-struct CollisionBox {
-	int height, width;
-};
+#include "CollisionBox.h"
 
 class Asset : public Component {
 public:

@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\BottomPipe.h" />
+    <ClInclude Include="headers\CollisionBox.h" />
     <ClInclude Include="headers\Component.h" />
     <ClInclude Include="headers\Grass.h" />
     <ClInclude Include="headers\Asset.h" />
