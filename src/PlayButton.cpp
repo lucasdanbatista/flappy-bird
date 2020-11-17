@@ -1,7 +1,7 @@
 #include "../headers/PlayButton.h";
 
-PlayButton::PlayButton(SDL_Renderer* renderer, SDL_Texture* texture) : Widget(renderer, texture) {
-	Component::Component(renderer, texture);
+PlayButton::PlayButton(State state) : Widget(state) {
+	Component::Component(state);
 	source.h = 14;
 	source.w = 40;
 	source.x = 242;

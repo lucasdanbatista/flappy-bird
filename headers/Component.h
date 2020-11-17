@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include <iostream>
+#include "State.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ protected:
 public:
 	SDL_Rect source{}, target{};
 
-	Component(SDL_Renderer* renderer, SDL_Texture* texture);
+	Component(State state);
 
 	virtual void copyToRenderer();
 };

@@ -157,6 +157,7 @@
     <ClInclude Include="headers\Bird.h" />
     <ClInclude Include="headers\Widget.h" />
     <ClInclude Include="headers\PlayButton.h" />
+    <ClInclude Include="headers\State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,8 +1,8 @@
 #include "../headers/Component.h"
 
-Component::Component(SDL_Renderer* renderer, SDL_Texture* texture) {
-	this->renderer = renderer;
-	this->texture = texture;
+Component::Component(State state) {
+	this->renderer = state.renderer;
+	this->texture = state.texture;
 }
 
 void Component::copyToRenderer() {

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Component.h";
+#include "Component.h"
 
 struct CollisionBox {
-	double height, width;
+	int height, width;
 };
 
 class Asset : public Component {
@@ -11,7 +11,7 @@ public:
 	string type = "asset";
 	CollisionBox collisionBox{};
 
-	Asset(SDL_Renderer* renderer, SDL_Texture* texture);
+	Asset(State state);
 
 	virtual bool hasCollidedWith(Asset asset);
 };

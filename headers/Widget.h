@@ -4,7 +4,7 @@
 
 class Widget : public Component {
 public:
-	Widget(SDL_Renderer* renderer, SDL_Texture* texture);
+	Widget(State state);
 
 	virtual void show();
 

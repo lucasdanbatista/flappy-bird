@@ -3,12 +3,9 @@
 #include "headers/Bird.h"
 #include "headers/Grass.h"
 #include "headers/PlayButton.h"
+#include "headers/State.h"
 
 #undef main
-
-struct MouseCoordinates {
-	int* x = 0, y = 0;
-};
 
 void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, SDL_Texture* texture) {
 	SDL_DestroyRenderer(renderer);
@@ -18,18 +15,25 @@ void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, S
 	IMG_Quit();
 }
 
+
 int main(int argc, char* args[]) {
+	State state{};
+
 	auto window = SDL_CreateWindow("Flappy Bird", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 288, 512, 0);
-	auto renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+
+	state.renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+
 	auto surface = IMG_Load("sprites.png");
-	auto texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	state.texture = SDL_CreateTextureFromSurface(state.renderer, surface);
+
 	auto fps = 1000 / 8;
 
 	SDL_FreeSurface(surface);
 
-	PlayButton playButton(renderer, texture);
+	PlayButton playButton(state);
 
-	Asset scenario(renderer, texture);
+	Asset scenario(state);
 	scenario.source.h = 256;
 	scenario.source.w = 144;
 	scenario.source.x = 0;
@@ -39,9 +43,9 @@ int main(int argc, char* args[]) {
 	scenario.target.x = 0;
 	scenario.target.y = 0;
 
-	Bird bird(renderer, texture);
+	Bird bird(state);
 
-	Asset bottomPipe(renderer, texture);
+	Asset bottomPipe(state);
 	bottomPipe.source.h = 121;
 	bottomPipe.source.w = 26;
 	bottomPipe.source.x = 330;
@@ -51,7 +55,7 @@ int main(int argc, char* args[]) {
 	bottomPipe.target.x = 200;
 	bottomPipe.target.y = 291;
 
-	Asset topPipe(renderer, texture);
+	Asset topPipe(state);
 	topPipe.source.h = 135;
 	topPipe.source.w = 26;
 	topPipe.source.x = 302;
@@ -61,28 +65,23 @@ int main(int argc, char* args[]) {
 	topPipe.target.x = 200;
 	topPipe.target.y = -50;
 
-	Grass grass(renderer, texture);
+	Grass grass(state);
 
-	int mouseX, mouseY;
-	auto currentFrame = 0;
-	auto isRunning = true, isPaused = false;
-	while (isRunning) {
+	while (state.isRunning) {
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
-			SDL_GetMouseState(&mouseX, &mouseY);
+			SDL_GetMouseState(&state.mouseX, &state.mouseY);
 			switch (event.type) {
 			case SDL_QUIT:
-				isRunning = false;
+				state.isRunning = false;
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				bird.fly();
-				cout << "Mouse button down" << endl;
-				cout << "mouseX: " << mouseX << "\tmouseY: " << mouseY << endl;
-				if (isPaused) {
-					if (mouseX >= 105 && mouseX <= 182) {
-						if (mouseY >= 260 && mouseY <= 282) {
+				if (state.isPaused) {
+					if (state.mouseX >= 105 && state.mouseX <= 182) {
+						if (state.mouseY >= 260 && state.mouseY <= 282) {
 							bird.target.y = 250;
-							isPaused = false;
+							state.isPaused = false;
 						}
 					}
 				}
@@ -92,9 +91,9 @@ int main(int argc, char* args[]) {
 
 		if (bird.hasCollidedWith(grass)) {
 			bird.target.y = grass.target.y - bird.collisionBox.height;
-			isPaused = true;
+			state.isPaused = true;
 
-			SDL_RenderClear(renderer);
+			SDL_RenderClear(state.renderer);
 
 			scenario.copyToRenderer();
 			topPipe.copyToRenderer();
@@ -103,11 +102,11 @@ int main(int argc, char* args[]) {
 			bird.copyToRenderer();
 			playButton.copyToRenderer();
 
-			SDL_RenderPresent(renderer);
+			SDL_RenderPresent(state.renderer);
 		}
 
-		if (!isPaused) {
-			SDL_RenderClear(renderer);
+		if (!state.isPaused) {
+			SDL_RenderClear(state.renderer);
 
 			scenario.copyToRenderer();
 			topPipe.copyToRenderer();
@@ -115,7 +114,7 @@ int main(int argc, char* args[]) {
 			grass.copyToRenderer();
 			bird.copyToRenderer();
 
-			bird.source.y = (currentFrame % 3) * 16;
+			bird.source.y = (state.currentFrame % 3) * 16;
 
 			topPipe.target.x -= 8;
 			if (topPipe.target.x < -70) topPipe.target.x = 300;
@@ -128,14 +127,14 @@ int main(int argc, char* args[]) {
 
 			bird.fall();
 
-			SDL_RenderPresent(renderer);
+			SDL_RenderPresent(state.renderer);
 			SDL_Delay(fps);
 
-			currentFrame++;
+			state.currentFrame++;
 		}
 	}
 
-	destroy(surface, renderer, window, texture);
+	destroy(surface, state.renderer, window, state.texture);
 
 	return 0;
 }

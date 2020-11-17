@@ -55,5 +55,8 @@
     <ClInclude Include="headers\PlayButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

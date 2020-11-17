@@ -6,7 +6,7 @@ class Bird : public Asset
 {
 
 public:
-	Bird(SDL_Renderer* renderer, SDL_Texture* texture);
+	Bird(State state);
 
 	virtual void fly();
 

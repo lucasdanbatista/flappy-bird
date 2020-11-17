@@ -1,6 +1,6 @@
 #include "../headers/Bird.h"
 
-Bird::Bird(SDL_Renderer* renderer, SDL_Texture* texture) : Asset(renderer, texture) {
+Bird::Bird(State state) : Asset(state) {
 	source.h = 12;
 	source.w = 17;
 	source.x = 392;
