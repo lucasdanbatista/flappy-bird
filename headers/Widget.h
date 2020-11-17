@@ -6,5 +6,7 @@ class Widget : public Component {
 public:
 	Widget(SDL_Renderer* renderer, SDL_Texture* texture);
 
-	void onEventTriggered(SDL_Event* event);
+	virtual void show();
+
+	virtual void hide();
 };

@@ -144,8 +144,8 @@
     <ClCompile Include="src\Asset.cpp" />
     <ClCompile Include="src\Bird.cpp" />
     <ClCompile Include="FlappyBird.cpp" />
+    <ClCompile Include="src\PlayButton.cpp" />
     <ClCompile Include="src\Widget.cpp" />
-    <ClCompile Include="Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -156,7 +156,7 @@
     <ClInclude Include="headers\Asset.h" />
     <ClInclude Include="headers\Bird.h" />
     <ClInclude Include="headers\Widget.h" />
-    <ClInclude Include="Widget.h" />
+    <ClInclude Include="headers\PlayButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

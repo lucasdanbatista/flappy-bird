@@ -2,8 +2,13 @@
 #include "headers/Asset.h"
 #include "headers/Bird.h"
 #include "headers/Grass.h"
+#include "headers/PlayButton.h"
 
 #undef main
+
+struct MouseCoordinates {
+	int* x = 0, y = 0;
+};
 
 void destroy(SDL_Surface* surface, SDL_Renderer* renderer, SDL_Window* window, SDL_Texture* texture) {
 	SDL_DestroyRenderer(renderer);
@@ -21,6 +26,8 @@ int main(int argc, char* args[]) {
 	auto fps = 1000 / 8;
 
 	SDL_FreeSurface(surface);
+
+	PlayButton playButton(renderer, texture);
 
 	Asset scenario(renderer, texture);
 	scenario.source.h = 256;
@@ -56,32 +63,46 @@ int main(int argc, char* args[]) {
 
 	Grass grass(renderer, texture);
 
+	int mouseX, mouseY;
 	auto currentFrame = 0;
 	auto isRunning = true, isPaused = false;
 	while (isRunning) {
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
+			SDL_GetMouseState(&mouseX, &mouseY);
 			switch (event.type) {
 			case SDL_QUIT:
 				isRunning = false;
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				bird.fly();
+				cout << "Mouse button down" << endl;
+				cout << "mouseX: " << mouseX << "\tmouseY: " << mouseY << endl;
+				if (isPaused) {
+					if (mouseX >= 105 && mouseX <= 182) {
+						if (mouseY >= 260 && mouseY <= 282) {
+							bird.target.y = 250;
+							isPaused = false;
+						}
+					}
+				}
 				break;
 			}
 		}
 
 		if (bird.hasCollidedWith(grass)) {
 			bird.target.y = grass.target.y - bird.collisionBox.height;
-			cout << bird.target.y << endl;
 			isPaused = true;
 
 			SDL_RenderClear(renderer);
+
 			scenario.copyToRenderer();
 			topPipe.copyToRenderer();
 			bottomPipe.copyToRenderer();
 			grass.copyToRenderer();
 			bird.copyToRenderer();
+			playButton.copyToRenderer();
+
 			SDL_RenderPresent(renderer);
 		}
 
