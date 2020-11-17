@@ -15,5 +15,7 @@ public:
 	virtual bool hasCollidedWith(Asset* asset) override;
 
 	virtual void setTargetInitialPosition() override;
+
+	virtual void updatePosition() override;
 };
 

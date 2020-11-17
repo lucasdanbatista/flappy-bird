@@ -21,3 +21,5 @@ Grass::Grass(State* state) : Asset(state) {
 	collisionBox.height = target.h;
 	collisionBox.width = target.w;
 }
+
+void Grass::updatePosition() {}

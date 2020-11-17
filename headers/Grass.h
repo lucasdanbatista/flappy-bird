@@ -5,5 +5,7 @@
 class Grass : public Asset {
 public:
 	Grass(State* state);
+
+	virtual void updatePosition();
 };
 

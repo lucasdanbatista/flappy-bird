@@ -9,3 +9,5 @@ Asset::Asset(State* state) : Component(state) {
 }
 
 void Asset::setTargetInitialPosition() {}
+
+void Asset::updatePosition() {}

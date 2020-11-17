@@ -82,5 +82,8 @@
     <ClInclude Include="headers\CollisionBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

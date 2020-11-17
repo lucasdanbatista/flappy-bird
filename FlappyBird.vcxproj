@@ -161,6 +161,7 @@
     <ClInclude Include="headers\Grass.h" />
     <ClInclude Include="headers\Asset.h" />
     <ClInclude Include="headers\Bird.h" />
+    <ClInclude Include="headers\Position.h" />
     <ClInclude Include="headers\Scenario.h" />
     <ClInclude Include="headers\TopPipe.h" />
     <ClInclude Include="headers\Widget.h" />

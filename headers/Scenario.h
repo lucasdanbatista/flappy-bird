@@ -5,4 +5,6 @@
 class Scenario : public Asset {
 public:
 	Scenario(State* state);
+
+	virtual void updatePosition();
 };

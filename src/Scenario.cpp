@@ -16,3 +16,5 @@ Scenario::Scenario(State* state) : Asset(state) {
 	target.x = 0;
 	target.y = 0;
 }
+
+void Scenario::updatePosition() {}

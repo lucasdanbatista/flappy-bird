@@ -12,9 +12,14 @@ BottomPipe::BottomPipe(State* state) : Asset(state) {
 	target.w = 26 * 2;
 
 	setTargetInitialPosition();
+
+	collisionBox.height = target.h;
+	collisionBox.width = target.w;
 }
 
 void BottomPipe::setTargetInitialPosition() {
 	target.x = 200;
 	target.y = 291;
 }
+
+void BottomPipe::updatePosition() {}
