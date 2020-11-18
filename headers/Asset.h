@@ -15,4 +15,6 @@ public:
 	virtual void setTargetInitialPosition();
 
 	virtual void updatePosition();
+
+	virtual void animate(State* state);
 };

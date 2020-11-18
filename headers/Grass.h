@@ -6,6 +6,8 @@ class Grass : public Asset {
 public:
 	Grass(State* state);
 
-	virtual void updatePosition();
+	virtual void updatePosition() override;
+
+	virtual void animate(State* state) override;
 };
 

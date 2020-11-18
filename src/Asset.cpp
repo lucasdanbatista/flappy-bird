@@ -7,3 +7,5 @@ Asset::Asset(State* state) : Component(state) {
 void Asset::setTargetInitialPosition() {}
 
 void Asset::updatePosition() {}
+
+void Asset::animate(State* state) {}

@@ -17,5 +17,7 @@ public:
 	virtual void setTargetInitialPosition() override;
 
 	virtual void updatePosition() override;
+
+	virtual	void animate(State* state) override;
 };
 

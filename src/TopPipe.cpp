@@ -18,3 +18,8 @@ void TopPipe::setTargetInitialPosition() {
 	target.x = 200;
 	target.y = -50;
 }
+
+void TopPipe::animate(State* state) {
+	target.x -= 8;
+	if (target.x < -70) target.x = 300;
+}

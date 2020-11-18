@@ -23,3 +23,8 @@ Grass::Grass(State* state) : Asset(state) {
 }
 
 void Grass::updatePosition() {}
+
+void Grass::animate(State* state) {
+	target.x -= 8;
+	if (target.x < -70) target.x = 0;
+}

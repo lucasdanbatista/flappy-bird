@@ -40,6 +40,12 @@ bool Bird::hasCollidedWith(Asset* asset) {
 	else if (asset->type == "bottomPipe") {
 		cout << 'x' << position.x << " ";
 		cout << 'y' << position.y << endl;
+
+
 	}
 	return false;
+}
+
+void Bird::animate(State* state) {
+	source.y = (state->currentFrame % 3) * 16;
 }

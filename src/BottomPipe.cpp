@@ -22,4 +22,12 @@ void BottomPipe::setTargetInitialPosition() {
 	target.y = 291;
 }
 
-void BottomPipe::updatePosition() {}
+void BottomPipe::updatePosition() {
+	position.x = target.x;
+	position.y = target.y;
+}
+
+void BottomPipe::animate(State* state) {
+	target.x -= 8;
+	if (target.x < -70) target.x = 300;
+}

@@ -92,18 +92,14 @@ int main(int argc, char* args[]) {
 		if (!state->isPaused) {
 			refreshScene();
 
-			bird->source.y = (state->currentFrame % 3) * 16;
-
-			topPipe->target.x -= 8;
-			if (topPipe->target.x < -70) topPipe->target.x = 300;
-
-			bottomPipe->target.x -= 8;
-			if (bottomPipe->target.x < -70) bottomPipe->target.x = 300;
-
-			grass->target.x -= 8;
-			if (grass->target.x < -70) grass->target.x = 0;
+			bird->animate(state);
+			topPipe->animate(state);
+			bottomPipe->animate(state);
+			grass->animate(state);
 
 			bird->fall();
+
+			bottomPipe->updatePosition();
 
 			SDL_RenderPresent(state->renderer);
 			SDL_Delay(fps);
