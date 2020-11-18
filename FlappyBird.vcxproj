@@ -155,18 +155,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\BottomPipe.h" />
-    <ClInclude Include="headers\CollisionBox.h" />
-    <ClInclude Include="headers\Component.h" />
-    <ClInclude Include="headers\Grass.h" />
-    <ClInclude Include="headers\Asset.h" />
-    <ClInclude Include="headers\Bird.h" />
-    <ClInclude Include="headers\Position.h" />
-    <ClInclude Include="headers\Scenario.h" />
-    <ClInclude Include="headers\TopPipe.h" />
-    <ClInclude Include="headers\Widget.h" />
-    <ClInclude Include="headers\PlayButton.h" />
-    <ClInclude Include="headers\State.h" />
+    <ClInclude Include="src\include\BottomPipe.h" />
+    <ClInclude Include="src\include\CollisionBox.h" />
+    <ClInclude Include="src\include\Component.h" />
+    <ClInclude Include="src\include\Grass.h" />
+    <ClInclude Include="src\include\Asset.h" />
+    <ClInclude Include="src\include\Bird.h" />
+    <ClInclude Include="src\include\Position.h" />
+    <ClInclude Include="src\include\Scenario.h" />
+    <ClInclude Include="src\include\TopPipe.h" />
+    <ClInclude Include="src\include\Widget.h" />
+    <ClInclude Include="src\include\PlayButton.h" />
+    <ClInclude Include="src\include\State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

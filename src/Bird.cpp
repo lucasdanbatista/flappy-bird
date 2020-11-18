@@ -1,4 +1,4 @@
-#include "../headers/Bird.h"
+#include "./include/Bird.h"
 
 Bird::Bird(State* state) : Asset(state) {
 	source.h = 12;

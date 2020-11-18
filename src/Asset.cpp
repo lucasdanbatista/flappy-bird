@@ -1,4 +1,4 @@
-#include "../headers/Asset.h"
+#include "./include/Asset.h"
 
 Asset::Asset(State* state) : Component(state) {
 	Component::Component(state);

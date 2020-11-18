@@ -1,12 +1,12 @@
 #include <SDL_image.h>
-#include "headers/Asset.h"
-#include "headers/Bird.h"
-#include "headers/Grass.h"
-#include "headers/PlayButton.h"
-#include "headers/state.h"
-#include "headers/BottomPipe.h"
-#include "headers/TopPipe.h"
-#include "headers/Scenario.h"
+#include "src/include/Asset.h"
+#include "src/include/Bird.h"
+#include "src/include/Grass.h"
+#include "src/include/PlayButton.h"
+#include "src/include/state.h"
+#include "src/include/BottomPipe.h"
+#include "src/include/TopPipe.h"
+#include "src/include/Scenario.h"
 
 #undef main
 

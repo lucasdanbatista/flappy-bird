@@ -1,4 +1,4 @@
-#include "../headers/State.h"
+#include "./include/State.h"
 
 State::State() {
 	window = SDL_CreateWindow("Flappy Bird", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 288, 512, 0);

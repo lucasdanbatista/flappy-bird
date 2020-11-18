@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../headers/Scenario.h"
+#include "./include/Scenario.h"
 
 #include <iostream>
 

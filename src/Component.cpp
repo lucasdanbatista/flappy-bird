@@ -1,4 +1,6 @@
-#include "../headers/Component.h"
+#pragma once
+
+#include "./include/Component.h"
 
 Component::Component(State* state) {
 	this->renderer = state->renderer;

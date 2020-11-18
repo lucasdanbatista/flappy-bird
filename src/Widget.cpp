@@ -1,4 +1,4 @@
-#include "../headers/Widget.h"
+#include "./include/Widget.h"
 
 Widget::Widget(State* state) : Component(state) {
 	Component::Component(state);
