@@ -6,8 +6,8 @@ using namespace std;
 Score::Score(State* state) : Component(state) {
 	Component::Component(state);
 	this->state = state;
-	target.x = 50;
-	target.y = 50;
+	target.x = 15;
+	target.y = 15;
 }
 
 void Score::increment() {
