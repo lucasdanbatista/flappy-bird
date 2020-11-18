@@ -7,6 +7,7 @@
 #include "src/include/BottomPipe.h"
 #include "src/include/TopPipe.h"
 #include "src/include/Scenario.h"
+#include "src/include/Score.h"
 
 #undef main
 
@@ -16,6 +17,7 @@ BottomPipe* bottomPipe;
 Bird* bird;
 Grass* grass;
 PlayButton* playButton;
+Score* score;
 State* state;
 const int fps = (1000 / 8);
 
@@ -27,6 +29,7 @@ void initialize() {
 	topPipe = new TopPipe(state);
 	bottomPipe = new BottomPipe(state);
 	scenario = new Scenario(state);
+	score = new Score(state);
 }
 
 void destroy() {
@@ -44,6 +47,7 @@ void refreshScene() {
 	topPipe->copyToRenderer();
 	bottomPipe->copyToRenderer();
 	grass->copyToRenderer();
+	score->copyToRenderer();
 	bird->copyToRenderer();
 }
 
@@ -97,6 +101,7 @@ int main(int argc, char* args[]) {
 			topPipe->animate(state);
 			bottomPipe->animate(state);
 			grass->animate(state);
+			score->increment();
 
 			bird->fall();
 
