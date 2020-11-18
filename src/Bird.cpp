@@ -20,11 +20,11 @@ void Bird::setTargetInitialPosition() {
 }
 
 void Bird::fly() {
-	target.y -= 8;
+	target.y -= 20;
 }
 
 void Bird::fall() {
-	target.y += 4;
+	target.y += 10;
 	updatePosition();
 }
 
@@ -38,8 +38,14 @@ bool Bird::hasCollidedWith(Asset* asset) {
 		return target.y >= 376;
 	}
 	else if (asset->type == "bottomPipe") {
-		return (asset->target.x <= 132 && asset->target.x >= 120) && target.y >= 311 ||
+		return (asset->target.x <= 132 && asset->target.x >= 120) && target.y >= 310 ||
 			(asset->target.x <= 112 && asset->target.x >= 48) && target.y >= 270;
+	}
+	else if (asset->type == "topPipe") {
+		cout << 'x' << position.x << " ";
+		cout << 'y' << position.y << endl;
+		return (asset->target.x <= 132 && asset->target.x >= 120) && target.y <= 220 ||
+			(asset->target.x <= 112 && asset->target.x >= 48) && target.y <= 220;
 	}
 	return false;
 }

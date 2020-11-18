@@ -84,7 +84,8 @@ int main(int argc, char* args[]) {
 			}
 		}
 
-		if (bird->hasCollidedWith(grass) || bird->hasCollidedWith(bottomPipe)) {
+		if (bird->hasCollidedWith(grass) || bird->hasCollidedWith(bottomPipe) ||
+			bird->hasCollidedWith(topPipe)) {
 			bird->target.y = grass->target.y - bird->collisionBox.height;
 			pauseGameAndShowPlayButton();
 		}
