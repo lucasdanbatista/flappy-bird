@@ -42,8 +42,6 @@ bool Bird::hasCollidedWith(Asset* asset) {
 			(asset->target.x <= 112 && asset->target.x >= 48) && target.y >= 270;
 	}
 	else if (asset->type == "topPipe") {
-		cout << 'x' << position.x << " ";
-		cout << 'y' << position.y << endl;
 		return (asset->target.x <= 132 && asset->target.x >= 120) && target.y <= 220 ||
 			(asset->target.x <= 112 && asset->target.x >= 48) && target.y <= 220;
 	}
@@ -52,4 +50,11 @@ bool Bird::hasCollidedWith(Asset* asset) {
 
 void Bird::animate(State* state) {
 	source.y = (state->currentFrame % 3) * 16;
+}
+
+bool Bird::isAfter(Asset* asset) {
+	if (asset->type == "bottomPipe") {
+		return asset->target.x <= 56 && asset->target.x >= 50;
+	}
+	return false;
 }

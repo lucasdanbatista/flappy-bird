@@ -101,7 +101,8 @@ int main(int argc, char* args[]) {
 			topPipe->animate(state);
 			bottomPipe->animate(state);
 			grass->animate(state);
-			score->increment();
+
+			if (bird->isAfter(bottomPipe)) score->increment();
 
 			bird->fall();
 

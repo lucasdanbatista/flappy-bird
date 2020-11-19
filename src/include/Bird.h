@@ -19,5 +19,7 @@ public:
 	virtual void updatePosition() override;
 
 	virtual	void animate(State* state) override;
+
+	virtual bool isAfter(Asset* asset);
 };
 
